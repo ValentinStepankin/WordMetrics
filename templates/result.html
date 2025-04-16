@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Результаты анализа</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Слово</th>
+        <th>TF</th>
+        <th>IDF</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in data %}
+    <tr>
+        <td>{{ item.word }}</td>
+        <td>{{ item.tf }}</td>
+        <td>{{ item.idf }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<div class="pagination">
+    {% if page > 1 %}
+    <a href="{{ url_for('show_results', page=page-1) }}">← Назад</a>
+    {% endif %}
+
+    <span>Страница {{ page }} из {{ total_pages }}</span>
+
+    {% if page < total_pages %}
+    <a href="{{ url_for('show_results', page=page+1) }}">Вперёд →</a>
+    {% endif %}
+</div>
+
+<a href="/">Загрузить другой файл</a>
+{% endblock %}

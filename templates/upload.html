@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Загрузите текстовый файл (.txt)</h1>
+<form method="post" enctype="multipart/form-data">
+    <input type="file" name="text_file" accept=".txt" required>
+    <button type="submit">Анализировать</button>
+</form>
+{% endblock %}
